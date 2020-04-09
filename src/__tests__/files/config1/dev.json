@@ -1,0 +1,11 @@
+{
+  "dataBase": {
+    "user": "root",
+    "password": "12345678_secure",
+    "name": "127.0.0.1"
+  },
+  "loadMysql": false,
+  "languages": ["ru", "br"],
+  "defaultLanguage": "ru",
+  "fileWeGetItFrom": "dev"
+}

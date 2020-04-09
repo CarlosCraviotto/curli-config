@@ -1,0 +1,10 @@
+{
+  "dataBase": {
+    "user": "default",
+    "password": "12345678_secure",
+    "name": "config",
+    "host": "localhost"
+  },
+  "languages": ["es", "en", "fr"],
+  "fileWeGetItFrom": "default"
+}

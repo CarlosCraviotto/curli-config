@@ -1,0 +1,62 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://example.com/example.json",
+  "type": "object",
+  "required": [
+    "dataBase",
+    "loadMysql",
+    "languages",
+    "fileWeGetItFrom",
+    "defaultLanguage"
+  ],
+  "properties": {
+    "dataBase": {
+      "$id": "#/properties/dataBase",
+      "type": "object",
+      "required": [
+        "user",
+        "password",
+        "name",
+        "host"
+      ],
+      "properties": {
+        "user": {
+          "$id": "#/properties/dataBase/properties/user",
+          "type": "string"
+        },
+        "password": {
+          "$id": "#/properties/dataBase/properties/password",
+          "type": "string"
+        },
+        "name": {
+          "$id": "#/properties/dataBase/properties/name",
+          "type": "string"
+        },
+        "host": {
+          "$id": "#/properties/dataBase/properties/host",
+          "type": "string"
+        }
+      }
+    },
+    "loadMysql": {
+      "$id": "#/properties/loadMysql",
+      "type": "boolean"
+    },
+    "languages": {
+      "$id": "#/properties/languages",
+      "type": "array",
+      "items": {
+        "$id": "#/properties/languages/items",
+        "type": "string"
+      }
+    },
+    "fileWeGetItFrom": {
+      "$id": "#/properties/fileWeGetItFrom",
+      "type": "string"
+    },
+    "defaultLanguage": {
+      "$id": "#/properties/defaultLanguage",
+      "type": "string"
+    }
+  }
+}
