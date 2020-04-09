@@ -1,4 +1,9 @@
 # curli-config
+
+[![Build Status](https://travis-ci.org/CarlosCraviotto/curli-config.svg?branch=master)](https://travis-ci.com/github/CarlosCraviotto/curli-config)
+[![Coverage Status](https://coveralls.io/repos/github/CarlosCraviotto/curli-config/badge.svg?branch=master&cach=ff)](https://coveralls.io/github/CarlosCraviotto/curli-config?branch=master)
+
+
 A small library to load / validate configuration files placed in different sides of the application using environments
 
 
