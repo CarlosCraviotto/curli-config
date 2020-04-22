@@ -31,6 +31,31 @@ const defaultLanguage = config.get("defaultLanguage")
 
 ```
 
+
+
+#### Adding more files to import from runtime
+
+
+```typescript
+import {Config} from "curli-config";
+
+const config = new Config({
+            environment: 'local',
+            filesPaths: {path: __dirname + '/config'}
+        });
+
+//loading files from this folder.
+config.addNewPath({path: __dirname + '/config_db'});
+
+//get the value from here
+const defaultLanguage = config.get("defaultLanguage")
+
+```
+
+### 
+
+
+
 ### Commands
 
  - `npm run build`: Build the project (config).
@@ -40,6 +65,22 @@ const defaultLanguage = config.get("defaultLanguage")
  - `npm run test:coverage`:  Execute the tests and calculate the coverage.
  - `npm run lint`: Check the code using the rules in .eslintre.js
  - `npm run lint:fix`: Check the code and try to fix it.
+
+
+
+### Changelog
+
+All notable changes to this project will be documented in this section.
+
+### 1.0.0 - 2020-04-22
+
+#### Added
+
+- Support for add files in runtime.
+
+#### Changed
+
+- Remove all the settings classes
 
 
 
