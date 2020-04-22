@@ -1,28 +1,27 @@
 import {Settings} from '../Settings';
 import {LoaderConfigsFile} from './LoaderConfigsFile';
-import {FilesPathModel} from '../Settings/FilesPathModel';
 import {LoaderConfigsFilesGroup} from './LoaderConfigsFilesGroup';
+import {DEFAULT_FILE_NAME, FILE_NAME_EXTENSION, FORCE_VALIDATE_SCHEMAS} from './Const';
+import {ConfigFilesPathModel} from '../Settings/ConfigFilesPathModel';
 
 export class LoaderConfigsFileFactory {
 
-    private readonly defaultFileName: string;
-    private readonly fileExtencion: string;
     private readonly environment: string;
     private readonly forceValidateSchemas: boolean;
 
-    public constructor (private settings: Settings) {
-        this.defaultFileName = this.settings.DEFAULT_FILE_NAME;
-        this.fileExtencion = this.settings.FILE_NAME_EXTENSION;
-        this.environment = this.settings.getEnvironment();
-        this.forceValidateSchemas = this.settings.getForceValidateSchemas();
+    public constructor (settings: Settings) {
+        this.environment = settings.environment;
+        this.forceValidateSchemas =
+            (typeof settings.forceValidateSchemas === 'undefined') ?
+                FORCE_VALIDATE_SCHEMAS : settings.forceValidateSchemas;
     }
 
-    public factory (): Array<LoaderConfigsFilesGroup> {
-        const filesPathsCollection: Array<FilesPathModel> =
-            this.settings.getFilesPaths().getPaths();
+    public factory (
+        filesPathsCollection: Array<ConfigFilesPathModel>
+    ): Array<LoaderConfigsFilesGroup> {
         const arrayLoaderConfigsGroups: Array<LoaderConfigsFilesGroup> = [];
 
-        filesPathsCollection.forEach((filesPathModel: FilesPathModel) => {
+        filesPathsCollection.forEach((filesPathModel: ConfigFilesPathModel) => {
             arrayLoaderConfigsGroups.push(
                 this.buildLoaderConfigsFilesGroup(filesPathModel)
             );
@@ -32,10 +31,10 @@ export class LoaderConfigsFileFactory {
     }
 
     private buildLoaderConfigsFilesGroup (
-        filesPathModel: FilesPathModel
+        filesPathModel: ConfigFilesPathModel
     ): LoaderConfigsFilesGroup {
 
-        const path: string = filesPathModel.getPath();
+        const path: string = filesPathModel.path;
         const group: LoaderConfigsFilesGroup = new LoaderConfigsFilesGroup(
             path,
             this.forceValidateSchemas
@@ -43,7 +42,7 @@ export class LoaderConfigsFileFactory {
 
         // TODO: implement cache system
         group.add(
-            new LoaderConfigsFile(this.getFullFileNameByPath(path, this.defaultFileName))
+            new LoaderConfigsFile(this.getFullFileNameByPath(path, DEFAULT_FILE_NAME))
         );
         group.add(
             new LoaderConfigsFile(this.getFullFileNameByPath(path, this.environment))
@@ -53,7 +52,7 @@ export class LoaderConfigsFileFactory {
     }
 
     private getFullFileNameByPath (path: string, fileName: string): string {
-        return path + '/' + fileName + this.fileExtencion;
+        return path + '/' + fileName + FILE_NAME_EXTENSION;
     }
 
 }

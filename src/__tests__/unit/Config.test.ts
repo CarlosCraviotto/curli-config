@@ -116,6 +116,23 @@ describe('Config class tests', function () {
         chai.assert.deepEqual(false, config.get('loadMysql'));
     });
 
+    it('Should add a second round of files', function () {
+
+        const config = new Config({
+            environment: 'local',
+            forceValidateSchemas: false, // we don't need it
+            filesPaths: [],
+        });
+
+        chai.assert.deepEqual(undefined, config.get('loadMysql'));
+
+        config.addPathsOfConfiguration({path: __dirname + '/../files/config1'});
+        chai.assert.deepEqual(false, config.get('loadMysql'));
+
+        config.addPathsOfConfiguration({path: __dirname + '/../files/dataBaseSecondConfig'});
+        chai.assert.deepEqual('local_databaseSecondConfig', config.get('fileWeGetItFrom'));
+    });
+
     it('Should validate using schema and find error', function () {
 
         chai.assert.throws(function () {

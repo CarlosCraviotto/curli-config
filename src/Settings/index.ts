@@ -1,2 +1,2 @@
-export {SettingsInterface} from './SettingsInterface';
 export {Settings} from './Settings';
+export {ConfigFilesPathModel} from './ConfigFilesPathModel';

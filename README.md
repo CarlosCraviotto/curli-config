@@ -41,5 +41,17 @@ const defaultLanguage = config.get("defaultLanguage")
  - `npm run lint`: Check the code using the rules in .eslintre.js
  - `npm run lint:fix`: Check the code and try to fix it.
 
+
+
+### Contributing
+
+When submitting your pull-request try to follow those guides:
+
+- https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github
+- https://medium.com/@vadimdemedes/making-your-first-contribution-de6576ddb190
+
+
+
 ### License
+
 MIT
