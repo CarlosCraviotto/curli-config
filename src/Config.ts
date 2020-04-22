@@ -16,7 +16,7 @@ export class Config {
         this.getConfigFromFiles(filesPaths);
     }
 
-    public addPathsOfConfiguration (file: ConfigFilesPathModel): any {
+    public addNewPath (file: ConfigFilesPathModel): any {
         const filesPaths = this.getPathsAsArrays(file);
         this.getConfigFromFiles(filesPaths);
     }

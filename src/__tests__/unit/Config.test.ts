@@ -126,10 +126,10 @@ describe('Config class tests', function () {
 
         chai.assert.deepEqual(undefined, config.get('loadMysql'));
 
-        config.addPathsOfConfiguration({path: __dirname + '/../files/config1'});
+        config.addNewPath({path: __dirname + '/../files/config1'});
         chai.assert.deepEqual(false, config.get('loadMysql'));
 
-        config.addPathsOfConfiguration({path: __dirname + '/../files/dataBaseSecondConfig'});
+        config.addNewPath({path: __dirname + '/../files/dataBaseSecondConfig'});
         chai.assert.deepEqual('local_databaseSecondConfig', config.get('fileWeGetItFrom'));
     });
 
